@@ -185,26 +185,6 @@
             </plugin>
         </plugins>
     </build>
-<distributionManagement>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>starsgroupchina snapshots</name>
-            <url>http://192.168.40.60:8081/repository/maven-snapshots/</url>
-        </snapshotRepository>
-        <repository>
-            <id>releases</id>
-            <name>starsgroupchina releases</name>
-            <url>http://192.168.40.60:8081/repository/maven-releases/</url>
-        </repository>
-    </distributionManagement>
-    <repositories>
-        <repository>
-            <id>starsgroupchina</id>
-            <url>http://192.168.40.60:8081/repository/maven-public/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+
 
 </project>
