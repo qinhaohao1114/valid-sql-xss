@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+    <script type="application/javascript" src="js/jquery-3.2.1.js"></script>
+    <script>
+        /**
+         * 查看帖子
+         */
+        function showBlogs() {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', '/testsql/blog/', true);
+            xhr.onreadystatechange = function (e) {
+                if (this.readyState == 4 && this.status == 200) {
+                    let blogsDiv = document.getElementById("blogsDiv");
+                    let blogs = JSON.parse(this.response);
+                    let blogsShow = '';
+                    for (let i = 0; i < blogs.length; i++) {
+                        blogsShow += blogs[i] + "<br/>";
+                    }
+                    blogsDiv.innerHTML = "";
+                    // 注意这里
+                    $('#blogsDiv').append(blogsShow);
+                }
+
+            }
+            xhr.send();
+        }
+
+        /**
+         * 发布帖子
+         */
+        function postBlog() {
+            var blogText = document.getElementById("blogText").value;
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/testsql/blog/', true);
+            xhr.onreadystatechange = function (e) {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert('OK');
+                }
+
+            }
+            xhr.send(blogText);
+        }
+
+        /**
+         * 清空帖子
+         */
+        function clearBlogs() {
+            const xhr = new XMLHttpRequest();
+            xhr.open('DELETE', '/testsql/blog/', true);
+            xhr.onreadystatechange = function (e) {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert("OK");
+                }
+
+            }
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+<button onclick="clearBlogs()">清空服务端博客</button>
+
+<div>测试脚本 &lt;script>alert('12')&lt;/script></div>
+
+<br/>
+<input type="text" id="blogText">
+<button onclick="postBlog()">发表博客</button>
+
+<br/>
+<br/>
+<button onclick="showBlogs()">查看博客</button>
+
+<br/>
+博客内容
+<hr/>
+
+<div id="blogsDiv">
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+<head>
+    <script type="application/javascript" src="js/jquery-3.2.1.js"></script>
+</head>
+<body>
+<h2>Hello World!</h2>
+<form>
+    <input type="button" name="" value="Update Contact Info" onclick="startJob()"><br><br>
+</form>
+<form id="member">
+    name:<input type="text" name="loginName"><br>
+    password:<input type="text" name="loginPwd"><br><br>
+    <input type="button" name="" value="login" onclick="logins()">
+</form>
+</body>
+<script>
+    function logins() {
+        $.ajax({
+            type: "POST",
+            url: "login",
+            data: $("#member").serialize(),
+            cache: false,
+            dataType: "json",
+            success: function (data) {
+                if(data.message=="err"){
+                    window.location='/testsql/err'
+                }else {
+                    window.location='/testsql/suc'
+                }
+
+            }
+        });
+    }
+
+</script>
+</html>

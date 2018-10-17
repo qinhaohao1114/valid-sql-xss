@@ -1,0 +1,23 @@
+spring:
+  datasource:
+      name: starsgroupchina
+      url: jdbc:mysql://47.100.55.164:3306/hxjk_credit?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=UTC
+      username: root
+      password: qhh921114
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      druid:
+        filters: config,slf4j,stat
+        maxActive: 30
+        initialSize: 2
+        maxWait: 60000
+        minIdle: 2
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+        connectionInitSqls: set names utf8mb4;

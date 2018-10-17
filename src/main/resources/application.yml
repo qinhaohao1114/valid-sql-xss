@@ -1,0 +1,21 @@
+server:
+  port: 11140
+  servlet-path: /testsql/*
+  tomcat:
+    max-threads: 800
+    uri-encoding: UTF-8
+spring:
+  profiles:
+    active: dev
+  mvc:
+    view:
+      prefix: /testsql/pages/
+      suffix: .html
+  http:
+    encoding:
+      charset: utf-8
+      enabled: true
+      force: true
+#logging:
+#  level:
+#    com.vcredit.ci.mapper: debug

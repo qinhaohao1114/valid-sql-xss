@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="wanda" targetRuntime="MyBatis3" defaultModelType="flat">
+
+        <!--<plugin type="com.starsgroupchina.common.plugin.mybatis.CommentPlugin"></plugin>-->
+        <!--<plugin type="com.starsgroupchina.common.plugin.mybatis.AddWherePlugin"></plugin>-->
+        <!--<plugin type="com.starsgroupchina.common.plugin.mybatis.PagerPlugin"></plugin>-->
+        <!--<plugin type="com.starsgroupchina.common.plugin.mybatis.SerializablePlugin"></plugin>-->
+        <!--<plugin type="com.starsgroupchina.common.plugin.mybatis.EqualsHashCodePlugin"></plugin>-->
+        <!--<plugin type="com.starsgroupchina.common.plugin.mybatis.ExamplePlugin"></plugin>-->
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.40.64:3306/hxjk_credit?serverTimezone=UTC"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.vcredit.ci.vo" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.vcredit.ci.mapper"
+                         targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+
+        <table tableName="member" domainObjectName="Member"
+               enableInsert="true"
+               enableSelectByPrimaryKey="true"
+               enableSelectByExample="true"
+               enableUpdateByPrimaryKey="true"
+               enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               selectByPrimaryKeyQueryId="true"
+               selectByExampleQueryId="true">
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+        </table>
+
+    </context>
+    <!--
+    maven cmd:
+    mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
+     -Dmybatis.generator.overwrite=true mybatis-generator:generate
+     -->
+</generatorConfiguration>
